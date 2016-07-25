@@ -29,9 +29,13 @@ public class OneFragment extends Fragment {
         tabHost = (FragmentTabHost)view.findViewById(R.id.tabhost);
         tabHost.setup(getContext(), getChildFragmentManager(), android.R.id.tabcontent);
 
-        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator("CT1"), OneOneFragment.class, null);
+        tabHost.addTab(tabHost.newTabSpec("tab1").setIndicator(getResources().getString(R.string.child_tab_one)), OneOneFragment.class, null);
         tabHost.addTab(tabHost.newTabSpec("tab2").setIndicator("CT2"), OneTwoFragment.class, null);
         return view;
     }
 
+
+    public void receiveText(String text) {
+        ((FragmentTabActivity)getActivity()).receiveText(text);
+    }
 }

@@ -1,5 +1,6 @@
 package com.begentgroup.sampletab;
 
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -35,4 +36,23 @@ public class FragmentTabActivity extends AppCompatActivity {
 
         tabHost.setCurrentTabByTag("tab2");
     }
+
+
+    public void receiveText(String text) {
+        Fragment f = getSupportFragmentManager()
+                .findFragmentByTag("tab3");
+        if (f != null) {
+            ((ThreeFragment)f).setMessage(text);
+        } else {
+            savedMessage = text;
+        }
+        tabHost.setCurrentTabByTag("tab3");
+    }
+
+    public String getSavedMessage() {
+        return savedMessage;
+    }
+
+    String savedMessage = null;
+
 }
